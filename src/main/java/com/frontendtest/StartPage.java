@@ -3,7 +3,6 @@ package com.frontendtest;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.AriaRole;
 import com.microsoft.playwright.Locator;
 
 

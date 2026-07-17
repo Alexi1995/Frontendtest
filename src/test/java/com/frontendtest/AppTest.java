@@ -55,9 +55,23 @@ public class AppTest {
         String contact = "Contact sales";
         String hasText = "Our Sales team will contact"; // Text, který by měl být přítomen v otevřeném formuláři
         int index = 1; // Index tlačítka, pokud se na stránce vyskytuje více tlačítek se stejným textem
+        String formNameFirstName = "First name";
+        String formNameLastName = "Last name";
+        String formNameEmail = "E-mail";
+        String formCountry = "Cyprus";
+        String formNamePhone = "Phone";
+        String formNameCompany = "Company";
+        String formNameYourRole = "IT Manager";
+        String formNameNumberOfUsers = "Number of users";
+        String formNameMessage = "Message";
+        String ignoreMessage = "Ignore this – this is just the test";
+        String locatorNameCountry = "#frm-homepageContactForm-country";
+        String LocatorNameRole = "#frm-homepageContactForm-role";
+        String submitButton = "Submit";
+        String noError = "Thank you! Our Sales";
 
         StartPage startPage = new StartPage(page);
-        //ApplicationTesting applicationTesting = new ApplicationTesting(page);
+        FillForm fillForm = new FillForm(page);
         TakeScreenshot takeScreenshot = new TakeScreenshot(page);
         
         /** Krok 1: Otevření přihlašovací stránky*/
@@ -68,6 +82,26 @@ public class AppTest {
         startPage.clickButton(contact, index);
         startPage.checkFormOpenedRight(hasText, index);
         takeScreenshot.takeScreenshot("target/site/button_clicked.png");
+
+        /** Krok 3: Vyplnění formuláře s kontaktními informacemi*/
+        fillForm.fillInfo("John", formNameFirstName);
+        fillForm.fillInfo("Doe", formNameLastName);
+        fillForm.fillInfo("john.doe@example.com", formNameEmail);
+        fillForm.selectFromList(formCountry, locatorNameCountry);
+        fillForm.fillInfo("1714138048", formNamePhone);
+        fillForm.fillInfo("Example Company", formNameCompany);
+        fillForm.selectFromList(formNameYourRole, LocatorNameRole);
+        fillForm.fillUsersInfo(100, formNameNumberOfUsers);
+        fillForm.fillInfo(ignoreMessage, formNameMessage);
+        takeScreenshot.takeScreenshot("target/site/form_filled.png");
+
+        /** Krok 4: Odeslání vyplněného formuláře */
+        fillForm.submitForm(submitButton);
+        takeScreenshot.takeScreenshot("target/site/form_submitted.png");
+
+        /** Krok 5: Ověření úspěšného odeslání formuláře */
+        fillForm.verifyFormSubmitted(noError);
+        takeScreenshot.takeScreenshot("target/site/form_success.png");
 
         // Poznámka: page.pause() je pro automatický report vynechán, 
         // aby se test v CI/CD terminálu nezasekl. Pokud ho chcete, odkomentujte:
