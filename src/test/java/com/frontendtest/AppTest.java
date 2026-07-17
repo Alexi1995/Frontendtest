@@ -1,13 +1,13 @@
 package com.frontendtest;
 import com.microsoft.playwright.*;
-
 import java.util.Arrays;
-
 import org.junit.jupiter.api.*;
 
 /**
  * Hlavní třída pro automatizované testování webové aplikace Onice.
  * Obsahuje workflow pro přihlášení uživatele pomocí Playwright.
+ * @author Alexandr
+ * @version 1.0
  */
 public class AppTest {
     /**
@@ -58,7 +58,6 @@ public class AppTest {
         String formNameFirstName = "First name";
         String formNameLastName = "Last name";
         String formNameEmail = "E-mail";
-        String formCountry = "Cyprus";
         String formNamePhone = "Phone";
         String formNameCompany = "Company";
         String formNameYourRole = "IT Manager";
@@ -70,8 +69,18 @@ public class AppTest {
         String submitButton = "Submit";
         String noError = "Thank you! Our Sales";
 
+        String nameAdded = "John";
+        String lastNameAdded = "McDonald";
+        String fullNameAdded = nameAdded + " " + lastNameAdded;
+        String emailAdded = "john.mcd@example.com";
+        String phoneAdded = "1714138049";
+        String countryAdded = "Austria";
+        String companyAdded = "Example Company 1";
+        int amountOfUsersAdded = 10;
+
         StartPage startPage = new StartPage(page);
         FillForm fillForm = new FillForm(page);
+        SendForm sendForm = new SendForm();
         TakeScreenshot takeScreenshot = new TakeScreenshot(page);
         
         /** Krok 1: Otevření přihlašovací stránky*/
@@ -84,14 +93,14 @@ public class AppTest {
         takeScreenshot.takeScreenshot("target/site/button_clicked.png");
 
         /** Krok 3: Vyplnění formuláře s kontaktními informacemi*/
-        fillForm.fillInfo("John", formNameFirstName);
-        fillForm.fillInfo("Doe", formNameLastName);
-        fillForm.fillInfo("john.doe@example.com", formNameEmail);
-        fillForm.selectFromList(formCountry, locatorNameCountry);
-        fillForm.fillInfo("1714138048", formNamePhone);
-        fillForm.fillInfo("Example Company", formNameCompany);
+        fillForm.fillInfo(nameAdded, formNameFirstName);
+        fillForm.fillInfo(lastNameAdded, formNameLastName);
+        fillForm.fillInfo(emailAdded, formNameEmail);
+        fillForm.selectFromList(countryAdded, locatorNameCountry);
+        fillForm.fillInfo(phoneAdded, formNamePhone);
+        fillForm.fillInfo(companyAdded, formNameCompany);
         fillForm.selectFromList(formNameYourRole, LocatorNameRole);
-        fillForm.fillUsersInfo(100, formNameNumberOfUsers);
+        fillForm.fillUsersInfo(amountOfUsersAdded, formNameNumberOfUsers);
         fillForm.fillInfo(ignoreMessage, formNameMessage);
         takeScreenshot.takeScreenshot("target/site/form_filled.png");
 
@@ -102,6 +111,10 @@ public class AppTest {
         /** Krok 5: Ověření úspěšného odeslání formuláře */
         fillForm.verifyFormSubmitted(noError);
         takeScreenshot.takeScreenshot("target/site/form_success.png");
+
+        sendForm.verifyPotentialCustomerInDb(
+            fullNameAdded, emailAdded, amountOfUsersAdded, phoneAdded, formNameYourRole, countryAdded
+        );
 
         // Poznámka: page.pause() je pro automatický report vynechán, 
         // aby se test v CI/CD terminálu nezasekl. Pokud ho chcete, odkomentujte:

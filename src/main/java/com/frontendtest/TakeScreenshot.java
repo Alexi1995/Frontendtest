@@ -6,6 +6,8 @@ import com.microsoft.playwright.Page;
 /**
  * Tato třída řeší tvorbu a ukládání screenshotů během testování webové aplikace.
  * Obrázky se ukládají do složky target/site/ pro snadnou integraci s testovacími reporty.
+ * @author Alexandr
+ * @version 1.0
  */
 public class TakeScreenshot {
     private final Page page;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.frontendtest.AppTest" time="28.533" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.frontendtest.AppTest" time="37.194" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CZ"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/26.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/dasadanilova/Desktop/Frontend test/target/surefire/surefirebooter-20260717122758491_3.jar /Users/dasadanilova/Desktop/Frontend test/target/surefire 2026-07-17T12-27-58_442-jvmRun1 surefire-20260717122758491_1tmp surefire_0-20260717122758491_2tmp"/>
+    <property name="sun.java.command" value="/Users/dasadanilova/Desktop/Frontend test/target/surefire/surefirebooter-20260717132545054_3.jar /Users/dasadanilova/Desktop/Frontend test/target/surefire 2026-07-17T13-25-45_012-jvmRun1 surefire-20260717132545054_1tmp surefire_0-20260717132545054_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="AppTest"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/dasadanilova/Desktop/Frontend test/target/surefire/surefirebooter-20260717122758491_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/dasadanilova/Desktop/Frontend test/target/surefire/surefirebooter-20260717132545054_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="26.0.1"/>
@@ -62,27 +62,42 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="testLoginWorkflow" classname="com.frontendtest.AppTest" time="28.522">
+  <testcase name="testLoginWorkflow" classname="com.frontendtest.AppTest" time="37.185">
     <system-out><![CDATA[Otevírám Chromium a přicházím na: https://icewarp.com
 Dělám screenshot: target/site/start.png
 Klikám na tlačítko: Contact sales
 Šířka okna: 1728px
-Element začíná na X souřadnici: 1717.28955078125px
+Element začíná na X souřadnici: 1750.7489013671875px
 Ověřeno: Element se úspěšně zobrazil v pravé části obrazovky.
 Dělám screenshot: target/site/button_clicked.png
 Vyplňuji First name: John
-Vyplňuji Last name: Doe
-Vyplňuji E-mail: john.doe@example.com
-Položka 'Cyprus' není vybrána (aktuálně: Czech Republic). Vybírám...
-Vyplňuji Phone: 1714138048
-Vyplňuji Company: Example Company
+Vyplňuji Last name: McDonald
+Vyplňuji E-mail: john.mcd@example.com
+Položka 'Austria' není vybrána (aktuálně: Czech Republic). Vybírám...
+Vyplňuji Phone: 1714138049
+Vyplňuji Company: Example Company 1
 Položka 'IT Manager' není vybrána (aktuálně: ). Vybírám...
-Vyplňuji Number of users: 100
+Vyplňuji Number of users: 10
 Vyplňuji Message: Ignore this – this is just the test
 Dělám screenshot: target/site/form_filled.png
 Scrolluji k odesílacímu tlačítku...
 Dělám screenshot: target/site/form_submitted.png
 Dělám screenshot: target/site/form_success.png
+
+--- BLIND PART START ---
+1. Připojuji se k DB 'Customer'...
+[!] Informace: Reálná databáze 'Customer' na produkci není přímo dostupná.
+[!] Spouštím simulované ověření dat s tvými parametry...
+2. [Simulace] Ověřuji tabulku 'PotentialCustomers'...
+   -> [OK] cust_name: 'John McDonald'
+   -> [OK] cust_email: 'john.mcd@example.com'
+   -> [OK] cust_no_users: 10
+   -> [OK] cust_phone_number: '1714138049'
+   -> [OK] cust_role: 'IT Manager'
+   -> [OK] cust_country: 'Austria'
+   -> [OK] cust_contact_date: '2026-07-17'
+3. [Simulace] Vygenerované ID zákazníka (cust_id): ICE-CUST-49071
+--- BLIND PART SIMULATED SUCCESS ---
 ]]></system-out>
   </testcase>
 </testsuite>

@@ -7,7 +7,11 @@ import com.microsoft.playwright.Locator;
 
 
 /**
- * Objektová reprezentace startovní stránky.
+ * Tato třída řeší interakci s úvodní stránkou webové aplikace.
+ * Obsahuje metody pro otevření webové adresy, kliknutí na tlačítko a ověření, zda se otevřel formulář na pravé straně stránky.
+ * @author Alexandr
+ * @version 1.0
+ * StartPage
  */
 public class StartPage {
     private final Page page;
